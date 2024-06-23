@@ -17,7 +17,7 @@ function App() {
           fontFamily: 'BMJUA'
         }}
       >
-        <div className={styles.logo}>
+        <div className={styles.logo} onClick={() => window.location.replace('/timetable')}>
           <CalendarMonthIcon sx={{ verticalAlign: 'middle', marginRight: 1, color: '#8a2be2' }} />
           Common Clock
         </div>

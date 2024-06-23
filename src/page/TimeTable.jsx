@@ -24,7 +24,7 @@ const CalendarComponent = () => {
     textColor: '',
     teamPk: teamId,
     personalName: param.user,
-    allDay: true
+    allDay: false
   });
 
   const [data, setData] = useState([]);
@@ -35,6 +35,12 @@ const CalendarComponent = () => {
       const res = await axios.post('http://localhost:8080/personal/event', eventInfo);
       console.log(res);
       window.alert('일정이 생성되었습니다.');
+      getTimeTable();
+      setEventInfo({
+        ...eventInfo,
+        title: '',
+        allDay: false
+      });
     } catch (error) {}
   };
 
@@ -61,10 +67,19 @@ const CalendarComponent = () => {
   const handleEventRemove = (info) => console.log('Remove:', info);
 
   const handleInputChange = (e) => {
+    console.log(e.target.checked);
     const { name, value } = e.target;
     setEventInfo({
       ...eventInfo,
       [name]: value
+    });
+  };
+
+  const handleCheckChange = (e) => {
+    const { name, value } = e.target;
+    setEventInfo({
+      ...eventInfo,
+      [name]: e.target.checked
     });
   };
 
@@ -160,7 +175,7 @@ const CalendarComponent = () => {
                   id="schTitle"
                   name="allDay"
                   value={eventInfo.allDay}
-                  onChange={handleInputChange}
+                  onChange={handleCheckChange}
                 />
               </div>
             </div>

@@ -35,6 +35,7 @@ const CalendarComponent = () => {
       const res = await axios.post('http://localhost:8080/personal/event', eventInfo);
       console.log(res);
       window.alert('일정이 생성되었습니다.');
+      getTimeTable();
     } catch (error) {}
   };
 
