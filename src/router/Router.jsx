@@ -12,14 +12,13 @@ function Router() {
     <>
       <Routes>
         {/* <Route Component={PrivateRoute}> */}
-        <Route element={<Main />}>
-          <Route path="main" element={<Main />} />
-          <Route path="timetable/:personalName" element={<TimeTable />} />
-        </Route>
+        <Route path="" Component={Login} />
+        <Route path="/signup" Component={SignUp} />
+        <Route path="/timetable" element={<Main />} />
+        <Route path="/timetable/:user" element={<TimeTable />} />
         {/* </Route> */}
         {/* {/* <Route Component={PublicRoute}> */}
-        <Route path="/login" Component={Login} />
-        <Route path="/signup" Component={SignUp} />
+
         {/* </Route> */}
       </Routes>
     </>

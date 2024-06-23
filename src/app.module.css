@@ -1,0 +1,40 @@
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #282828;
+}
+
+.box1 {
+  position: fixed;
+  top: 0;
+  right: 0px;
+  width: 250px;
+  height: 80px;
+  background-color: mediumpurple;
+  border-radius: 0px 0px 0px 10px;
+  z-index: -1;
+}
+
+.box2 {
+  position: fixed;
+  left: 0px;
+  bottom: 0;
+  width: 400px;
+  height: 200px;
+  background-color: mediumpurple;
+  border-radius: 0px 10px 0px 0px;
+  z-index: -1;
+}
+
+.box3 {
+  position: fixed;
+  bottom: -50px;
+  left: 350px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  z-index: -1; /* 다른 요소 위에 표시될 층위 설정 */
+}

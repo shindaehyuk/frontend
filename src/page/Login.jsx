@@ -1,107 +1,70 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { useForm } from 'react-hook-form';
-import CircularProgress from '@mui/material/CircularProgress';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Alert, Snackbar } from '@mui/material';
 import axios from 'axios';
+import styles from './login.module.css';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function SignIn() {
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const [open, setOpen] = useState('');
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm();
-
+  //로그인 하는 함수
   const onSubmit = async (event) => {
+    event.preventDefault();
     console.log(event);
-    const res = await axios.post('http://localhost:8080/login', {
-      loginId: event.loginId,
-      password: event.password
-    });
-    localStorage.setItem('teamId', res.data.teamId);
-    console.log(res);
+
+    try {
+      const res = await axios.post('http://localhost:8080/login', {
+        loginId: event.target[0].value,
+        password: event.target[1].value
+      });
+      localStorage.setItem('teamId', res.data.data.teamId); // 로컬스토리지에 팀아이디 저장
+      navigate('/timetable'); //메인으로 이동
+    } catch (error) {
+      window.alert('아이디 혹은 비밀번호가 틀립니다.');
+    }
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center'
-        }}
-      >
-        <Snackbar
-          open={open === 1 || open === 2}
-          autoHideDuration={4000}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          onClose={() => setOpen(0)} // Snackbar 닫기 이벤트 처리
-        >
-          <Alert severity={open === 1 ? 'success' : open === 2 ? 'error' : 'error'} sx={{ width: '100%' }}>
-            {open === 1 && '로그인 성공! 메인페이지로 이동합니다.'}
-            {open === 2 && '아이디가 존재하지 않거나 비밀번호가 틀립니다.'}
-          </Alert>
-        </Snackbar>
+    <>
+      <div className={styles.logo}>
+        <CalendarMonthIcon sx={{ verticalAlign: 'middle', marginRight: 1, color: '#8a2be2' }} />
+        Common Clock
+      </div>
+      <div className={styles.loginContainer}>
+        <h2>Welcome</h2>
+        <form id="loginForm" onSubmit={onSubmit}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="Team_Id">Team Id</label>
+            <input type="text" id="id" name="Team_Id" required />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div className={styles.inUp}>
+            <button className={styles.loginForm} type="submit">
+              Log in
+            </button>
+            <button
+              className={styles.loginForm}
+              type="submit"
+              onClick={() => {
+                navigate('/signup');
+              }}
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+        <p id="message"></p>
+      </div>
 
-        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{}}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                className="animate__animated animate__fadeIn animate__delay-0.3s"
-                required
-                fullWidth
-                label="이메일"
-                autoFocus
-                {...register('loginId', {
-                  required: true
-                })}
-                color="success"
-                error={!!errors.email}
-                sx={{ backgroundColor: '#faedcd', borderRadius: '5px' }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className="animate__animated animate__fadeIn animate__delay-0.6s"
-                required
-                fullWidth
-                color="success"
-                label="비밀번호"
-                type="password"
-                {...register('password', {
-                  required: true
-                })}
-                error={!!errors.password}
-                sx={{ backgroundColor: '#faedcd', borderRadius: '5px' }}
-              />
-            </Grid>
-          </Grid>
-
-          <Button
-            className="animate__animated animate__fadeIn animate__delay-1.2s"
-            disabled={isLoading}
-            type="submit"
-            fullWidth
-            color="inherit"
-            variant="contained"
-            sx={{ mt: 4, mb: 4, backgroundColor: '#faedcd', color: 'black' }}
-          >
-            {isLoading ? <CircularProgress size={24} /> : 'Sign in'}
-          </Button>
-        </Box>
-      </Box>
-    </Container>
+      <div className={styles.summary}>
+        <p>
+          Common Clock is a collaboration tool that automatically finds and displays common available times by inputting
+          team members' schedules.
+        </p>
+      </div>
+    </>
   );
 }

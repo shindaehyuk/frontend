@@ -1,0 +1,147 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: whitesmoke;
+  position: relative;
+  margin: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #282828;
+}
+
+.logo i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.loginContainer {
+  position: fixed;
+  top: 100px;
+  left: 200px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  height: 450px;
+  text-align: center;
+  z-index: 1;
+}
+
+.loginContainer h2 {
+  margin-bottom: 80px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.inUp {
+  margin-top: 80px;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.inputGroup input {
+  width: 350px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: none;
+  background-color: rgb(235, 232, 232);
+  border-radius: 10px;
+}
+
+.loginForm {
+  width: 350px;
+  padding: 10px;
+  background-color: blueviolet;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: mediumpurple;
+}
+
+.summary {
+  position: fixed;
+  top: 230px;
+  left: 800px;
+  width: 400px;
+  height: 250px;
+  border-top: 1px solid blueviolet;
+  border-bottom: 1px solid blueviolet;
+  color: blueviolet;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  line-height: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.summary::before {
+  content: '“';
+  font-size: 40px;
+  position: absolute;
+  top: -20px;
+}
+
+.summary::after {
+  content: '”';
+  font-size: 40px;
+  position: absolute;
+  bottom: -20px;
+}
+
+.box1 {
+  position: fixed;
+  top: 0;
+  right: 0px;
+  width: 250px;
+  height: 80px;
+  background-color: mediumpurple;
+  border-radius: 0px 0px 0px 10px;
+}
+
+.box2 {
+  position: fixed;
+  left: 0px;
+  bottom: 0;
+  width: 400px;
+  height: 200px;
+  background-color: mediumpurple;
+  border-radius: 0px 10px 0px 0px;
+  z-index: 0;
+}
+
+.box3 {
+  position: fixed;
+  bottom: -50px;
+  left: 350px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  z-index: 0; /* 다른 요소 위에 표시될 층위 설정 */
+}
+
+#message {
+  margin-top: 20px;
+  color: red;
+}
