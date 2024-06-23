@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styles from './login.module.css';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -26,10 +25,6 @@ export default function SignIn() {
 
   return (
     <>
-      <div className={styles.logo}>
-        <CalendarMonthIcon sx={{ verticalAlign: 'middle', marginRight: 1, color: '#8a2be2' }} />
-        Common Clock
-      </div>
       <div className={styles.loginContainer}>
         <h2>Welcome</h2>
         <form id="loginForm" onSubmit={onSubmit}>

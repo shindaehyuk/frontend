@@ -3,23 +3,23 @@ import Main from '../page/Main';
 import Login from '../page/Login';
 import SignUp from '../page/Signup';
 import TimeTable from '../page/TimeTable';
-// import Admin from '../page/Admin';
-// import PrivateRoute from '../components/route/PrivateRoute';
-// import PublicRoute from '../components/route/PublicRoute';
+import TeamTimeTable from '../page/TeamTimeTable';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 function Router() {
   return (
     <>
       <Routes>
-        {/* <Route Component={PrivateRoute}> */}
-        <Route path="" Component={Login} />
-        <Route path="/signup" Component={SignUp} />
-        <Route path="/timetable" element={<Main />} />
-        <Route path="/timetable/:user" element={<TimeTable />} />
-        {/* </Route> */}
-        {/* {/* <Route Component={PublicRoute}> */}
-
-        {/* </Route> */}
+        <Route Component={PrivateRoute}>
+          <Route path="/timetable" element={<Main />} />
+          <Route path="/timetable/:user" element={<TimeTable />} />
+          <Route path="/timetable/team" element={<TeamTimeTable />} />
+        </Route>
+        <Route Component={PublicRoute}>
+          <Route path="" Component={Login} />
+          <Route path="/signup" Component={SignUp} />
+        </Route>
       </Routes>
     </>
   );

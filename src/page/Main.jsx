@@ -89,6 +89,9 @@ function Main() {
               variant="outlined"
               color="secondary"
               sx={{ height: '100px', width: '100px', borderRadius: '90px', marginLeft: '50px' }}
+              onClick={() => {
+                navigate('/timetable/team');
+              }}
             >
               <b>팀 시간표 조회</b>
             </Button>
@@ -134,7 +137,7 @@ function Main() {
                     variant="contained"
                     color="secondary"
                     disabled
-                    sx={{ height: '80px', width: '150px', borderRadius: '90px' }}
+                    sx={{ height: '60px', width: '120px', borderRadius: '90px' }}
                   >
                     new user
                   </Button>

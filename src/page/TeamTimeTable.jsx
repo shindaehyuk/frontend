@@ -24,7 +24,7 @@ const CalendarComponent = () => {
     textColor: '',
     teamPk: teamId,
     personalName: param.user,
-    allDay: true
+    allDay: false
   });
 
   const [data, setData] = useState([]);
@@ -99,9 +99,8 @@ const CalendarComponent = () => {
   };
 
   async function getTimeTable() {
-    const res = await axios.get(`http://localhost:8080/personal/${teamId}/${param.user}`);
+    const res = await axios.get(`http://localhost:8080/team/${teamId}`);
     setData(res.data.data.eventList);
-    console.log(res);
   }
 
   useEffect(() => {
@@ -119,7 +118,7 @@ const CalendarComponent = () => {
           locale={'ko'}
           slotMinTime="09:00"
           slotMaxTime="24:00"
-          allDaySlot={true}
+          allDaySlot={false}
           dayHeaderFormat={{ weekday: 'short' }}
           headerToolbar={{
             left: 'prevYear,prev,next,nextYear today',
@@ -151,19 +150,7 @@ const CalendarComponent = () => {
         <div className={calendarStyles.cont}>
           <h1>일정 입력</h1>
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              시작일
-              <div>
-                종일
-                <input
-                  type="checkbox"
-                  id="schTitle"
-                  name="allDay"
-                  value={eventInfo.allDay}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
+            <div>시작일</div>
             <input
               type="text"
               id="schStart"
@@ -196,7 +183,6 @@ const CalendarComponent = () => {
               className={inputStyles.input}
             />
           </div>
-
           <div className={`${inputStyles.inputColor} ${inputStyles.input}`}>
             <div>배경색</div>
             <input
@@ -206,6 +192,8 @@ const CalendarComponent = () => {
               value={eventInfo.backgroundColor}
               onChange={handleInputChange}
             />
+          </div>
+          <div className={`${inputStyles.inputColor} ${inputStyles.input}`}>
             <div>글자색</div>
             <input
               type="color"
@@ -215,7 +203,6 @@ const CalendarComponent = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className={`${inputStyles.inputColor} ${inputStyles.input}`}></div>
           {modalVisible && (
             <div>
               <button className={`${buttonStyles.customBtn} ${buttonStyles.append}`} onClick={addEvent}>

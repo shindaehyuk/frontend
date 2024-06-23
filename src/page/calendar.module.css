@@ -1,8 +1,8 @@
-#calendar {
+.calendar {
   margin: 50px;
 }
 
-#yrModal {
+.yrModal {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-#cont {
+.cont {
   margin: 50px auto;
   width: 450px;
   height: 550px;

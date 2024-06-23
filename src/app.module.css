@@ -38,3 +38,10 @@
   display: flex;
   z-index: -1; /* 다른 요소 위에 표시될 층위 설정 */
 }
+
+@font-face {
+  font-family: 'BMJUA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

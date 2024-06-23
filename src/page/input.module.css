@@ -1,4 +1,4 @@
-input[type='text'] {
+.input[type='text'] {
   width: 200px;
   height: 32px;
   font-size: 15px;
@@ -9,7 +9,7 @@ input[type='text'] {
   padding-left: 10px;
   background-color: rgb(233, 233, 233);
 }
-#cont div div {
+.cont div div {
   display: inline-block;
   width: 100px;
   height: 32px;

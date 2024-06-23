@@ -1,8 +1,8 @@
-button {
+.button {
   margin: 20px;
 }
 
-.custom-btn {
+.customBtn {
   width: 130px;
   height: 40px;
   color: #fff;
@@ -22,10 +22,10 @@ button {
 
 .append {
   background-color: orange;
-  /* background-image: linear-gradient(315deg, #fff4e6 0%, #ffbb99 74%); */
   line-height: 42px;
   padding: 0;
   border: none;
+  margin-right: 50px;
 }
 
 .append span {

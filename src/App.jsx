@@ -13,7 +13,8 @@ function App() {
           height: '100vh',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          fontFamily: 'BMJUA'
         }}
       >
         <div className={styles.logo}>
